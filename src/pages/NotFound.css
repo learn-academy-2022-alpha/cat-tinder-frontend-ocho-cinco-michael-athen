@@ -1,9 +1,0 @@
-.Not_Found {
-    display: flex;
-    background-color: blueviolet;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: calc(75vh - 65px);
-    padding-top: 75px;
-}

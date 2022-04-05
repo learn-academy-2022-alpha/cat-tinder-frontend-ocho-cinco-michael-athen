@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import "./Home.css";
 
 class Home extends Component {
     render() {
         return (
             <div className="Home">
-                <h1>Home</h1>
+                <h1>Welcome to Cat Tinder!</h1>
+                <img src="https://cdn.pixabay.com/photo/2019/07/18/08/58/cat-4345889_1280.jpg" />
             </div>
         )
     }
