@@ -151,4 +151,10 @@ beforeEach(() => {
 
 Create an additional test for the component Home.js that checks for the first img tag and all of its props.
 
+it("displays a picture of a bengal cat", () => {
+  const renderedImage = shallow(<Home />)
+  const bengalCat = renderedImage.find("img")
+  expect(renderedImage.length).toEqual(1)
+})
+
 Create an additional test for the component Header.js that checks for a tag by its class name to contain some text.

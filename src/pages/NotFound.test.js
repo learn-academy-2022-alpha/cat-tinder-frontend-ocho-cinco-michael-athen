@@ -16,7 +16,7 @@ Enzyme.configure({adapter: new Adapter()})
 describe("When NotFound renders", () => {
   it("displays NotFound", () => {
     const renderedNotFound = shallow(<NotFound />)
-    const notFoundHeading = renderedNotFound.find("h1")
-    expect(notFoundHeading.text()).toEqual('Not Found')
+    const notFoundHeading = renderedNotFound.find("h2")
+    expect(notFoundHeading.text()).toEqual("You're not supposed to be here!")
   })
 })
