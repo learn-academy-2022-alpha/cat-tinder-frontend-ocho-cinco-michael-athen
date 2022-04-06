@@ -7,11 +7,11 @@ Cat Tinder Setup
     As a developer, I can create a file called Header.js in the components directory.
         import Header from "./components/Header";
         <Header />
-   
+
     As a developer, I can create a file called Footer.js in the components directory.
          import Footer from "./components/Footer";
         <Footer />
-    
+
     As a developer, I can create a file called Home.js in the pages directory.
     As a developer, I can create a file called CatIndex.js in the pages directory.
     As a developer, I can create a file called CatShow.js in the pages directory.
@@ -97,3 +97,64 @@ Cat Tinder Setup
           </Switch>
           <Footer />
         </Router>
+
+Challenge: Cat Tinder Tests
+        Add Enzyme to your application
+        yarn add -D enzyme react-test-renderer enzyme-adapter-react-16
+
+        Add a test file for the Home, Header, Footer, and NotFound components with the .test.js extension.
+
+        Create a test for each page, checking that the page is rendering by asserting against a single JSX element.
+
+        describe("When App renders", () => {
+          let app
+          beforeEach(() => {
+            app = shallow(<App />)
+          })
+          it("displays Header and Footer", () => {
+            //const renderedApp = shallow(<App />)
+            const renderedHeader = app.find("Header")
+            expect(renderedHeader.length).toEqual(1)
+            const renderedFooter = app.find("Footer")
+            expect(renderedFooter.length).toEqual(1)
+          })
+          it("provides a route for home component", () => {
+            //const renderedApp = shallow(<App />)
+            const renderedHomeRoute = app.find('[path="/"]')
+            expect(renderedHomeRoute.length).toEqual(1)
+          })
+        })
+
+        describe("When Home renders", () => {
+          it("displays Home as the Header", () => {
+            const renderedHome = shallow(<Home />)
+            const homeHeading = renderedHome.find("h1")
+            expect(renderedHome.text()).toEqual('Home')
+          })
+        })
+
+        describe("When NotFound renders", () => {
+          it("displays NotFound", () => {
+            const renderedNotFound = shallow(<NotFound />)
+            const notFoundHeading = renderedNotFound.find("h1")
+            expect(notFoundHeading.text()).toEqual('Not Found')
+          })
+        })
+
+Stretch Challenges
+As a developer, I can make my tests more DRY by declaring reusable variables in global scope.
+
+let app
+beforeEach(() => {
+  app = shallow(<App />)
+})
+
+Create an additional test for the component Home.js that checks for the first img tag and all of its props.
+
+it("displays a picture of a bengal cat", () => {
+  const renderedImage = shallow(<Home />)
+  const bengalCat = renderedImage.find("img")
+  expect(renderedImage.length).toEqual(1)
+})
+
+Create an additional test for the component Header.js that checks for a tag by its class name to contain some text.
