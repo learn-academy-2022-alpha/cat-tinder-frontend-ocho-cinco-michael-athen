@@ -142,25 +142,25 @@ Challenge: Cat Tinder Tests
         })
 
 Stretch Challenges
-As a developer, I can make my tests more DRY by declaring reusable variables in global scope.
+        As a developer, I can make my tests more DRY by declaring reusable variables in global scope.
 
-let app
-beforeEach(() => {
-  app = shallow(<App />)
-})
+        let app
+        beforeEach(() => {
+          app = shallow(<App />)
+        })
 
-Create an additional test for the component Home.js that checks for the first img tag and all of its props.
+        Create an additional test for the component Home.js that checks for the first img tag and all of its props.
 
-it("displays a picture of a bengal cat", () => {
-  const renderedImage = shallow(<Home />)
-  const bengalCat = renderedImage.find("img")
-  expect(renderedImage.length).toEqual(1)
-})
+        it("displays a picture of a bengal cat", () => {
+          const renderedImage = shallow(<Home />)
+          const bengalCat = renderedImage.find("img")
+          expect(renderedImage.length).toEqual(1)
+        })
 
-Create an additional test for the component Header.js that checks for a tag by its class name to contain some text.
+        Create an additional test for the component Header.js that checks for a tag by its class name to contain some text.
 
 Challenge: Cat Index and Show
-As a developer, I can pass the cat mock data in state to my index component.
+        As a developer, I can pass the cat mock data in state to my index component.
 
           constructor(props) {
           super(props)
@@ -174,7 +174,7 @@ As a developer, I can pass the cat mock data in state to my index component.
               render={(props) => <CatIndex cats={this.state.cats} />}
         />
 
-As a user, I can see a page that lists of all the cat names.
+        As a user, I can see a page that lists of all the cat names.
 
           <h2>CatIndex</h2>
                 <ul>
@@ -183,8 +183,8 @@ As a user, I can see a page that lists of all the cat names.
                             <NavLink to={`/catshow/${cat.id}`} key={cat.id}>{cat.name}</NavLink></li>;
                     })}
                 </ul>
-                
-As a developer, I have test coverage on my index component.
+
+        As a developer, I have test coverage on my index component.
 
           describe("When CatIndex renders", () => {
               it("displays a heading", () => {
@@ -194,9 +194,9 @@ As a developer, I have test coverage on my index component.
               })
           })
 
-As a developer, I can refactor the show route to pass the param of id for one cat.
-As a user, I can see a page featuring all the information for one cat.
-As a user, I can click on a cat name and be taken to a page that shows me all the information about that cat.
+        As a developer, I can refactor the show route to pass the param of id for one cat.
+        As a user, I can see a page featuring all the information for one cat.
+        As a user, I can click on a cat name and be taken to a page that shows me all the information about that cat.
 
               class CatShow extends Component {
                 render() {
@@ -212,7 +212,7 @@ As a user, I can click on a cat name and be taken to a page that shows me all th
               }
               export default CatShow
 
-As a developer, I have test coverage on my show component.
+        As a developer, I have test coverage on my show component.
 
             describe("When CatShow renders", () => {
               it("displays a picture of a the show cat", () => {
@@ -221,4 +221,3 @@ As a developer, I have test coverage on my show component.
                   expect(showCat.length).toEqual(1)
               })
            })
-
