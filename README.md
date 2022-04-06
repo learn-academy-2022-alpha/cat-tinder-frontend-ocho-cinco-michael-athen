@@ -158,3 +158,67 @@ it("displays a picture of a bengal cat", () => {
 })
 
 Create an additional test for the component Header.js that checks for a tag by its class name to contain some text.
+
+Challenge: Cat Index and Show
+As a developer, I can pass the cat mock data in state to my index component.
+
+          constructor(props) {
+          super(props)
+          this.state = {
+            cats: mockCats
+          }
+        }
+
+        <Route
+              path="/catindex"
+              render={(props) => <CatIndex cats={this.state.cats} />}
+        />
+
+As a user, I can see a page that lists of all the cat names.
+
+          <h2>CatIndex</h2>
+                <ul>
+                    {this.props.cats && this.props.cats.map(cat => {
+                        return <li>
+                            <NavLink to={`/catshow/${cat.id}`} key={cat.id}>{cat.name}</NavLink></li>;
+                    })}
+                </ul>
+                
+As a developer, I have test coverage on my index component.
+
+          describe("When CatIndex renders", () => {
+              it("displays a heading", () => {
+                  const renderedCatIndex = shallow(<CatIndex />)
+                  const catIndexHeader = renderedCatIndex.find("h2")
+                  expect(catIndexHeader.text()).toEqual("CatIndex")
+              })
+          })
+
+As a developer, I can refactor the show route to pass the param of id for one cat.
+As a user, I can see a page featuring all the information for one cat.
+As a user, I can click on a cat name and be taken to a page that shows me all the information about that cat.
+
+              class CatShow extends Component {
+                render() {
+                  return (
+                    <>
+                    <h2>Meet the Amazing {this.props.cat && this.props.cat.name}!</h2>
+                    <p>Age: {this.props.cat && this.props.cat.age}</p>
+                    <p>Enjoys: {this.props.cat && this.props.cat.enjoys}</p>
+                    <img src={this.props.cat && this.props.cat.image} />
+                  </>
+                  )
+                }
+              }
+              export default CatShow
+
+As a developer, I have test coverage on my show component.
+
+            describe("When CatShow renders", () => {
+              it("displays a picture of a the show cat", () => {
+                  const renderedImage = shallow(<CatShow />)
+                  const showCat = renderedImage.find("img")
+                  expect(showCat.length).toEqual(1)
+              })
+           })
+
