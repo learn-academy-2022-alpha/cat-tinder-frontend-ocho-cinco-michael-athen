@@ -221,3 +221,144 @@ Challenge: Cat Index and Show
                   expect(showCat.length).toEqual(1)
               })
            })
+
+Challenge: Cat Create
+
+        As a user, I can fill out a form to add a new cat.
+        As a developer, I can store the cat object in state.
+        As a developer, I can pass the cat object to App.js on submit and see the cat object logged in the console.
+
+        class CatNew extends Component {
+          constructor(props){
+          super(props)
+          this.state = {
+            newCat: {
+              name: "",
+              age: "",
+              enjoys: "",
+              image: ""
+            },
+            submitted:false
+          }
+        }
+
+        handleChange = (e) => {
+          // destructuring form out of state
+          let { newCat } = this.state
+          newCat[e.target.name] = e.target.value
+          // setting state to the updated form content
+          this.setState({newCat: newCat})
+        }
+
+        handleSubmit = () => {
+          this.props.createCat(this.state.newCat)
+          this.setState({submitted:true})
+        }
+
+        render() {
+            return (
+              <div className="CatNew">
+              <Form>
+                <h2>Create a New Cat!</h2>
+                <FormGroup>
+                  <Label for="name">Cat's Name</Label>
+                  <Input
+                    name="name"
+                    placeholder="What's the cat's name?"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newCat.name}
+                  />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label for="age">Cat's Age</Label>
+                  <Input
+                    name="age"
+                    placeholder="What's the cat's age?"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newCat.age}
+                  />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label for="enjoys">What does the Cat Enjoy Doing?</Label>
+                  <Input
+                    name="enjoys"
+                    placeholder="What does the cat enjoy doing?"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newCat.enjoys}
+                  />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label for="image">Picture of Cat</Label>
+                  <Input
+                    name="image"
+                    placeholder="What does your cat look like?"
+                    text="url"
+                    onChange={this.handleChange}
+                    value={this.state.newCat.image}
+                  />
+                </FormGroup>
+                <Button name="submit" onClick={this.handleSubmit}> Create a New Profile! </Button>
+                {this.state.submitted && <Redirect to="/catindex" />}
+              </Form>
+            </div>
+            )
+
+        As a user, I can be routed to the index page after I submit the new cat form.
+
+        <Button name="submit" onClick={this.handleSubmit}> Create a New Profile! </Button>
+        {this.state.submitted && <Redirect to="/catindex" />}
+
+        As a developer, I have test coverage on my new page.
+        NOTE: We are still only interacting with mock data so we will not see a new cat added to the collection of cats.
+
+        // Imports React into our test file.
+        import React from 'react'
+
+        // Imports Enzyme testing and deconstructs Shallow into our test file.
+        import Enzyme, { shallow } from 'enzyme'
+
+        // Imports Adapter utilizing the latest react version into our test file so we can run a testing render on any component we may need.
+        import Adapter from 'enzyme-adapter-react-16'
+
+        // Imports in the component we are going to be testing.
+        import CatNew from './CatNew'
+
+        //Allows us to utilize the adapter we import in earlier, allowing us to call and render a component.
+        Enzyme.configure({ adapter: new Adapter() })
+
+        describe("When CatNew renders", () => {
+          let newCat
+          beforeEach(() => {
+            newCat = shallow(<CatNew />)
+          })
+            it("displays a heading", () => {
+                const catNewHeader = newCat.find("h2")
+                expect(catNewHeader.text()).toEqual("Create a New Cat!")
+            })
+            it("displays a form", () => {
+                const newForm = newCat.find("Form")
+                expect(newForm.length).toEqual(1)
+            })
+            it("displays a cat name input", () => {
+                const catNewNameInput = newCat.find("[name='name']")
+                expect(catNewNameInput.length).toEqual(1)
+            })
+            it("displays a cat age input", () => {
+                const catNewAgeInput = newCat.find("[name='age']")
+                expect(catNewAgeInput.length).toEqual(1)
+            })
+            it("displays a cat enjoys input", () => {
+                const catNewEnjoysInput = newCat.find("[name='enjoys']")
+                expect(catNewEnjoysInput.length).toEqual(1)
+            })
+            it("displays a cat image input", () => {
+                const catNewImageInput = newCat.find("[name='image']")
+                expect(catNewImageInput.length).toEqual(1)
+            })
+        })

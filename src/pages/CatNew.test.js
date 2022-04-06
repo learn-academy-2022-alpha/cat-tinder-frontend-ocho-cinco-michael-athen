@@ -14,9 +14,32 @@ import CatNew from './CatNew'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe("When CatNew renders", () => {
+  let newCat
+  beforeEach(() => {
+    newCat = shallow(<CatNew />)
+  })
     it("displays a heading", () => {
-        const renderedCatNew = shallow(<CatNew />)
-        const catNewHeader = renderedCatNew.find("h2")
+        const catNewHeader = newCat.find("h2")
         expect(catNewHeader.text()).toEqual("Create a New Cat!")
+    })
+    it("displays a form", () => {
+        const newForm = newCat.find("Form")
+        expect(newForm.length).toEqual(1)
+    })
+    it("displays a cat name input", () => {
+        const catNewNameInput = newCat.find("[name='name']")
+        expect(catNewNameInput.length).toEqual(1)
+    })
+    it("displays a cat age input", () => {
+        const catNewAgeInput = newCat.find("[name='age']")
+        expect(catNewAgeInput.length).toEqual(1)
+    })
+    it("displays a cat enjoys input", () => {
+        const catNewEnjoysInput = newCat.find("[name='enjoys']")
+        expect(catNewEnjoysInput.length).toEqual(1)
+    })
+    it("displays a cat image input", () => {
+        const catNewImageInput = newCat.find("[name='image']")
+        expect(catNewImageInput.length).toEqual(1)
     })
 })
