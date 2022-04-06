@@ -17,6 +17,6 @@ describe("When Header renders", () => {
   it("displays Header", () => {
     const renderedHeader = shallow(<Header />)
     const actualHeader = renderedHeader.find("h1")
-    expect(actualHeader.text()).toEqual('Header')
+    expect(actualHeader.text()).toEqual('Cat Tinder')
   })
 })

@@ -16,7 +16,7 @@ Enzyme.configure({adapter: new Adapter()})
 describe("When Footer renders", () => {
   it("displays Footer", () => {
     const renderedFooter = shallow(<Footer />)
-    const actualFooter = renderedFooter.find("h1")
-    expect(actualFooter.text()).toEqual('Footer')
+    const actualFooter = renderedFooter.find("a")
+    expect(actualFooter.length).toEqual(2)
   })
 })
