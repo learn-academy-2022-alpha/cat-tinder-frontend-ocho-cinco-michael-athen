@@ -1,5 +1,4 @@
-
-
+/* ------ Footer Component -------------------------------- */
 .Footer {
     padding-top: 0.75em;
     text-align: center;
@@ -8,6 +7,7 @@
     background-color: blue;
 }
 
+/* ------ Header Component -------------------------------- */
 .Header {
     padding-top: 0;
     text-align: center;
@@ -16,6 +16,7 @@
     background-color: green;
 }
 
+/* ------ Not Found Page -------------------------------- */
 .Not_Found {
     display: flex;
     background-color: blueviolet;
@@ -26,6 +27,7 @@
     padding-top: 75px;
 }
 
+/* ------ Home Page -------------------------------- */
 .Home {
     display: flex;
     background-color: yellow;
@@ -36,7 +38,8 @@
     padding-top: 75px;
 }
 
+/* ------ Image -------------------------------- */
 img {
-  max-width: 100%;
-  max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
 }
