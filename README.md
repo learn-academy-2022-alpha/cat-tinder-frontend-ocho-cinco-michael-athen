@@ -362,3 +362,97 @@ Challenge: Cat Create
                 expect(catNewImageInput.length).toEqual(1)
             })
         })
+
+Challenge: Cat Update
+
+        As a user, I can fill out a form to edit an existing cat.
+        As a developer, I can add onChange and value attributes to each input.
+
+        <Form>
+          <h2>Update a Cat!</h2>
+          <FormGroup>
+            <Label for="name">Cat's Name</Label>
+            <Input
+              name="name"
+              text="text"
+              onChange={this.handleChange}
+              value={this.state.newCat.name}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="age">Cat's Age</Label>
+            <Input
+              name="age"
+              text="text"
+              onChange={this.handleChange}
+              value={this.state.newCat.age}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="enjoys">What does the Cat Enjoy Doing?</Label>
+            <Input
+              name="enjoys"
+              text="text"
+              onChange={this.handleChange}
+              value={this.state.newCat.enjoys}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="image">Picture of Cat</Label>
+            <Input
+              name="image"
+              text="url"
+              onChange={this.handleChange}
+              value={this.state.newCat.image}
+            />
+          </FormGroup>
+          <Button name="submit" onClick={this.handleSubmit}> Update Cat! </Button>
+          {this.state.submitted && <Redirect to= {`/catshow/${this.props.cat.id}`} />}
+        </Form>
+
+        As a developer, I can pass the updated cat object to App.js on submit and see the cat object logged in the console.
+        updateCat = (cat, id) =>{
+          console.log("cat:", cat)
+          console.log("id:", id)
+        }
+
+        As a user, I can see a button on my show page that will take me to the edit page for that particular cat.
+        <NavLink to={`/catedit/${this.props.cat && this.props.cat.id}`}> <Button> Edit this Cat's Profile! </Button></NavLink>
+
+        As a user, I can be routed to the show page after I submit the edited cat form.
+        {this.state.submitted && <Redirect to= {`/catshow/${this.props.cat.id}`} />}
+
+        As a developer, I have test coverage on my edit page.
+        describe("When CatEdit renders", () => {
+          let newCat
+          beforeEach(() => {
+            newCat = shallow(<CatEdit />)
+          })
+            it("displays a heading", () => {
+                const catEditHeader = newCat.find("h2")
+                expect(catEditHeader.text()).toEqual("Update a Cat!")
+            })
+            it("displays a form", () => {
+                const editForm = newCat.find("Form")
+                expect(editForm.length).toEqual(1)
+            })
+            it("displays a cat name input", () => {
+                const catEditNameInput = newCat.find("[name='name']")
+                expect(catEditNameInput.length).toEqual(1)
+            })
+            it("displays a cat age input", () => {
+                const catEditAgeInput = newCat.find("[name='age']")
+                expect(catEditAgeInput.length).toEqual(1)
+            })
+            it("displays a cat enjoys input", () => {
+                const catEditEnjoysInput = newCat.find("[name='enjoys']")
+                expect(catEditEnjoysInput.length).toEqual(1)
+            })
+            it("displays a cat image input", () => {
+                const catEditImageInput = newCat.find("[name='image']")
+                expect(catEditImageInput.length).toEqual(1)
+            })
+        })

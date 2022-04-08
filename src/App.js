@@ -28,6 +28,11 @@ createCat = (cat) => {
   console.log(cat)
 }
 
+updateCat = (cat, id) =>{
+  console.log("cat:", cat)
+  console.log("id:", id)
+}
+
   render() {
     return (
       <>
@@ -52,7 +57,12 @@ createCat = (cat) => {
             <Route path="/catnew"
               render={(props) => <CatNew createCat={this.createCat} />}
              />
-            <Route path="/catedit" component={CatEdit} />
+
+            <Route path="/catedit/:id" render = {(props) => {
+                let id = props.match.params.id
+                let cat = this.state.cats.find(catObj => catObj.id === +id)
+                return <CatEdit updateCat={this.updateCat} cat={cat} />
+            }}/>
             <Route component={NotFound} />
           </Switch>
           <Footer />

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Button } from 'reactstrap'
 
 class CatShow extends Component {
     render() {
@@ -10,6 +12,7 @@ class CatShow extends Component {
                 <p>Age: {this.props.cat && this.props.cat.age}</p>
                 <p>Enjoys: {this.props.cat && this.props.cat.enjoys}</p>
                 <img src={this.props.cat && this.props.cat.image} />
+                <NavLink to={`/catedit/${this.props.cat && this.props.cat.id}`}> <Button> Edit this Cat's Profile! </Button></NavLink>
               </div>
             </>
         )
