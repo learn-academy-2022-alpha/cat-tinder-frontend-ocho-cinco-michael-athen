@@ -4,70 +4,102 @@
     text-align: center;
     bottom: 0;
     width: 100%;
-    background-color: blue;
+    background-color: #FE3C72;
 }
 
 /* ------ Header Component -------------------------------- */
 .Header {
-    padding-top: 0;
+    padding-top:0;
     text-align: left;
     padding-bottom: 1em;
     width: 100%;
-    background-color: blueviolet;
+    background-color: #424242;
+    color: #FE3C72;
+    display: flex;
 }
 
 /* ------ Not Found Page -------------------------------- */
 .Not_Found {
     display: flex;
-    background-color: blueviolet;
+    background-color: #424242;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(75vh - 65px);
     padding-top: 75px;
+    color: #FE3C72;
 }
 
 /* ------ Home Page -------------------------------- */
 .Home {
     display: flex;
-    background-color: yellow;
+    background-color: #424242;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(75vh - 65px);
     padding-top: 75px;
+    padding-bottom: 60px;
+    color: #FE3C72;
 }
 
+/* ------ Index Page -------------------------------- */
 .Index {
     display: flex;
-    background-color: orange;
+    background-color: #424242;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(75vh - 65px);
     padding-top: 75px;
+    color: #FE3C72;
 }
 
+/* ------ CatNew Page -------------------------------- */
 .CatNew {
     display: flex;
-    background-color: #9fe2bf;
+    background-color: #424242;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(75vh - 65px);
     padding-top:10px;
+    color: #FE3C72;
 }
 
+/* ------ CatEdit Page -------------------------------- */
 .CatEdit{
   display: flex;
-  background-color: #9fe2bf;
+  background-color: #424242;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: calc(75vh - 65px);
   padding-top:10px;
+  color: #FE3C72;
 }
 
+/* ------ CatShow Page -------------------------------- */
+.CatShow {
+    display: flex;
+    background-color: #424242;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(75vh - 60px);
+    padding-top: 75px;
+    padding-bottom: 75px;
+    color: #FE3C72;
+}
+
+/* ------ FlamePaw Logo -------------------------------- */
+.FlamePaw{
+  padding-left: 10px;
+}
+
+.Buttons{
+  flex-direction: row;
+}
 
 /* ------ Image -------------------------------- */
 img {

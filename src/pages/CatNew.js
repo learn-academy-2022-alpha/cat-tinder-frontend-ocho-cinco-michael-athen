@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 // react-router import
 import { Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 class CatNew extends Component {
   constructor(props){
@@ -78,7 +79,8 @@ handleSubmit = () => {
                 value={this.state.newCat.image}
               />
             </FormGroup>
-            <Button name="submit" onClick={this.handleSubmit}> Create a New Profile! </Button>
+            <Button name="submit" onClick={this.handleSubmit}> Create New Profile! </Button>
+            <p><NavLink to={`/`}><Button>Go Back to Homepage</Button></NavLink></p>
             {this.state.submitted && <Redirect to="/catindex" />}
           </Form>
         </div>

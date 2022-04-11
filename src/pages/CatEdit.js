@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 // react-router import
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class CatEdit extends Component {
   constructor(props){
@@ -72,6 +73,7 @@ class CatEdit extends Component {
                 />
               </FormGroup>
               <Button name="submit" onClick={this.handleSubmit}> Update Cat! </Button>
+              <p><NavLink to={`/`}><Button>Go Back to Homepage</Button></NavLink></p>
               {this.state.submitted && <Redirect to= {`/catshow/${this.props.cat.id}`} />}
             </Form>
             </div>
